@@ -1,5 +1,8 @@
 package com.mad.thegamedb;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Chinmay Rawool on 2/18/2017.
  */
@@ -48,4 +51,10 @@ public class Game {
                 ", id='" + id + '\'' +
                 '}';
     }
+     public String display(){
+         /*Date date = new Date(getReleaseDate());
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
+         String str = dateFormat.format(date);*/
+         return getGameTitle()+". Released in "+getReleaseDate()+". Platform: "+getPlatform();
+     }
 }

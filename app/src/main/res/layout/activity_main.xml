@@ -37,14 +37,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/linear1">
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/db_rg1">
 
+            </RadioGroup>
         </LinearLayout>
     </ScrollView>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="GO"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:id="@+id/db_btn_go" />
 </LinearLayout>
