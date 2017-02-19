@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 
 public class GameOverview implements Serializable{
-    String title, overview, publisher, genres, baseImgUrl, imgUrl,youTubeUrl,gameTitle,releaseDate,platform,id;
+    String title, overview, publisher, genres, baseImgUrl, imgUrl,youTubeUrl,releaseDate,platform,id;
     ArrayList<String> similarGames;
 
     public GameOverview() {
@@ -35,13 +35,6 @@ public class GameOverview implements Serializable{
         this.overview = overview;
     }
 
-    public String getGameTitle() {
-        return gameTitle;
-    }
-
-    public void setGameTitle(String gameTitle) {
-        this.gameTitle = gameTitle;
-    }
 
     public String getReleaseDate() {
         return releaseDate;
@@ -133,6 +126,6 @@ public class GameOverview implements Serializable{
          /*Date date = new Date(getReleaseDate());
          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
          String str = dateFormat.format(date);*/
-        return getGameTitle()+". Released in "+getReleaseDate()+". Platform: "+getPlatform();
+        return getTitle()+". Released in "+getReleaseDate()+". Platform: "+getPlatform();
     }
 }

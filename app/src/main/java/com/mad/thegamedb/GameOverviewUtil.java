@@ -95,8 +95,6 @@ public class GameOverviewUtil {
 
             }else if(localName.equals("id") && !flagSimilar){
                 game.setId(sb.toString().trim());
-            }else if(localName.equals("GameTitle")){
-                game.setGameTitle(sb.toString().trim());
             }else if(localName.equals("ReleaseDate")){
                 String str =sb.toString().trim();
                 if(!(str.equals(""))) {

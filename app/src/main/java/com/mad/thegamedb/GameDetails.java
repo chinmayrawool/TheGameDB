@@ -71,7 +71,7 @@ public class GameDetails extends AppCompatActivity implements GetImage.IGetImage
                 Intent i = new Intent(GameDetails.this,SimilarGames.class);
                 ArrayList<String> similarGames = game.getSimilarGames();
                 i.putExtra(SIMILAR_GAMES,similarGames);
-                i.putExtra(GAME_KEY,game.getGameTitle());
+                i.putExtra(GAME_KEY,game.getTitle());
                 startActivity(i);
             }
         });
