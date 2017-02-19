@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class GetDataAsync extends AsyncTask<String,Void,ArrayList<Game>> {
 
     GameData activity;
+
     public GetDataAsync(GameData activity){
         this.activity=activity;
     }

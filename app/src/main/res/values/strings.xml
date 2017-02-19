@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">The Game DB</string>
+    <string name="tv_overview">Overview:</string>
+    <string name="btn_play_trailer">Play Trailer</string>
+    <string name="btn_similar_game">Similar Games</string>
+    <string name="btn_finish">Finish</string>
 </resources>

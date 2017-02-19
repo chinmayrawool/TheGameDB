@@ -2,6 +2,7 @@ package com.mad.thegamedb;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +18,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements GetDataAsync.GameData{
+public class MainActivity extends AppCompatActivity implements GetDataAsync.GameData,GetGameDetails.IGameData{
+    public static final String GAME_KEY = "Game Details";
     LinearLayout linearLayout;
     EditText et;
     String url="";
+    String id;
     ArrayList<Game> gameList;
     ProgressDialog progressDialog;
     RadioGroup options;
@@ -63,8 +66,17 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
         findViewById(R.id.db_btn_go).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //new activity
                 //XML parsing for specific game
+                url = baseUrl+"GetGame.php?id="+id;
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage("Computing Progress");
+                progressDialog.setCancelable(false);
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
+                new GetGameDetails(MainActivity.this).execute(url);
+
+                //new activity
+
 
             }
         });
@@ -89,9 +101,30 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
         for(int i=0; i<gameList.size();i++){
             RadioButton rb = new RadioButton(MainActivity.this);
             rb.setPadding(0,5,0,5);
+            rb.setId(i);
             rb.setText(gameList.get(i).display());
             options.addView(rb);
         }
-        findViewById(R.id.db_btn_go).setEnabled(true);
+
+        options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                findViewById(R.id.db_btn_go).setEnabled(true);
+                Log.d("demo","checked id="+checkedId);
+                id = gameList.get(checkedId).getId();
+                Log.d("demo","id ="+id);
+                //Log.d("demo","text="+clickedtext);
+            }
+        });
+    }
+
+    @Override
+    public void sendGameDetails(GameOverview game) {
+        progressDialog.dismiss();
+        Log.d("game details",game.toString());
+        Intent intent = new Intent(this,GameDetails.class);
+        intent.putExtra(GAME_KEY,game);
+        startActivity(intent);
+
     }
 }
