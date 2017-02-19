@@ -1,19 +1,22 @@
 package com.mad.thegamedb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by neha5 on 18-02-2017.
  */
 
 public class GameOverview implements Serializable{
-    String title, overview, publisher, genres, baseImgUrl, imgUrl,youTubeUrl;
+    String title, overview, publisher, genres, baseImgUrl, imgUrl,youTubeUrl,gameTitle,releaseDate,platform,id;
+    ArrayList<String> similarGames;
 
     public GameOverview() {
         genres = "";
         baseImgUrl = "";
         youTubeUrl = "";
         imgUrl = "";
+        similarGames = new ArrayList<String>();
     }
 
     public String getTitle() {
@@ -30,6 +33,38 @@ public class GameOverview implements Serializable{
 
     public void setOverview(String overview) {
         this.overview = overview;
+    }
+
+    public String getGameTitle() {
+        return gameTitle;
+    }
+
+    public void setGameTitle(String gameTitle) {
+        this.gameTitle = gameTitle;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getGenres() {
@@ -72,6 +107,14 @@ public class GameOverview implements Serializable{
         this.imgUrl = imgUrl;
     }
 
+    public ArrayList<String> getSimilarGames() {
+        return similarGames;
+    }
+
+    public void setSimilarGames(ArrayList<String> similarGames) {
+        this.similarGames = similarGames;
+    }
+
     @Override
     public String toString() {
         return "GameOverview{" +
@@ -80,8 +123,16 @@ public class GameOverview implements Serializable{
                 ", publisher='" + publisher + '\'' +
                 ", genres='" + genres + '\'' +
                 ", baseImgUrl='" + baseImgUrl + '\'' +
-                ", youTubeUrl='" + youTubeUrl + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
+                ", youTubeUrl='" + youTubeUrl + '\'' +
+                ", similarGames=" + similarGames +
                 '}';
+    }
+
+    public String display(){
+         /*Date date = new Date(getReleaseDate());
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
+         String str = dateFormat.format(date);*/
+        return getGameTitle()+". Released in "+getReleaseDate()+". Platform: "+getPlatform();
     }
 }

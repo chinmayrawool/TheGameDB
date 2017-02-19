@@ -9,6 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 
 /**
@@ -21,8 +22,8 @@ public class GameOverviewUtil {
         GameOverview game;// = new GameOverview();
         StringBuilder sb;
         int count;
+        boolean flag = false, flagImages = false, flagSimilar = false;
 
-        boolean flag = false, flagImages = false;
         public static GameOverview parseGame(InputStream in) throws IOException, SAXException {
             GameOverviewUtil.GameDetailsSAXParser parser1 = new GameOverviewUtil.GameDetailsSAXParser();
             Xml.parse(in,Xml.Encoding.UTF_8,parser1);
@@ -52,7 +53,7 @@ public class GameOverviewUtil {
                 flagImages = true;
             }else if(localName.equals("Similar")){
                 count = 0;
-
+                flagSimilar = true;
             }
 
 
@@ -88,6 +89,21 @@ public class GameOverviewUtil {
                 game.setYouTubeUrl(sb.toString().trim());
             } else if(localName.equals("SimilarCount")){
                 count = Integer.parseInt(sb.toString().trim());
+
+            } else if(localName.equals("id") && flagSimilar){
+                game.getSimilarGames().add(sb.toString().trim());
+
+            }else if(localName.equals("id") && !flagSimilar){
+                game.setId(sb.toString().trim());
+            }else if(localName.equals("GameTitle")){
+                game.setGameTitle(sb.toString().trim());
+            }else if(localName.equals("ReleaseDate")){
+                String str =sb.toString().trim();
+                if(!(str.equals(""))) {
+                    game.setReleaseDate(sb.toString().trim());
+                }
+            }else if(localName.equals("Platform")){
+                game.setPlatform(sb.toString().trim());
             }
             sb.setLength(0);
         }

@@ -18,8 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameDetails"
-            android:label="Game Details"></activity>
+        <activity
+            android:name=".GameDetails"
+            android:label="Game Details" />
+        <activity android:name=".SimilarGames"
+            android:label="Similar Games">
+
+        </activity>
     </application>
 
 </manifest>

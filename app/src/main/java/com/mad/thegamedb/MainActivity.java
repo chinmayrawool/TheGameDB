@@ -75,9 +75,6 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
                 progressDialog.show();
                 new GetGameDetails(MainActivity.this).execute(url);
 
-                //new activity
-
-
             }
         });
 
@@ -122,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
     public void sendGameDetails(GameOverview game) {
         progressDialog.dismiss();
         Log.d("game details",game.toString());
+        //calling new activity
         Intent intent = new Intent(this,GameDetails.class);
         intent.putExtra(GAME_KEY,game);
         startActivity(intent);
