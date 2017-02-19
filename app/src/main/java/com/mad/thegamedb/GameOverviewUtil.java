@@ -1,5 +1,6 @@
 package com.mad.thegamedb;
 
+import android.util.Log;
 import android.util.Xml;
 
 import org.xml.sax.Attributes;
@@ -19,11 +20,13 @@ public class GameOverviewUtil {
     public static class GameDetailsSAXParser extends DefaultHandler {
         GameOverview game;// = new GameOverview();
         StringBuilder sb;
+        int count;
+
         boolean flag = false, flagImages = false;
         public static GameOverview parseGame(InputStream in) throws IOException, SAXException {
-            GameOverviewUtil.GameDetailsSAXParser parser = new GameOverviewUtil.GameDetailsSAXParser();
-            Xml.parse(in, Xml.Encoding.UTF_8,parser);
-            return parser.getGame();
+            GameOverviewUtil.GameDetailsSAXParser parser1 = new GameOverviewUtil.GameDetailsSAXParser();
+            Xml.parse(in,Xml.Encoding.UTF_8,parser1);
+            return parser1.getGame();
         }
 
         public GameOverview getGame() {
@@ -47,6 +50,9 @@ public class GameOverviewUtil {
                 flag = true;
             }else if(localName.equals("Images")){
                 flagImages = true;
+            }else if(localName.equals("Similar")){
+                count = 0;
+
             }
 
 
@@ -54,13 +60,13 @@ public class GameOverviewUtil {
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
             super.endElement(uri, localName, qName);
-
+            Log.d("demo",localName);
             if(localName.equals("GameTitle") && flag){
-                game.setTitle(sb.toString());
+                game.setTitle(sb.toString().trim());
             }else if(localName.equals("Overview") && flag){
-                game.setOverview(sb.toString());
+                game.setOverview(sb.toString().trim());
             }else if(localName.equals("genre") && flag){
-                String genre = sb.toString();
+                String genre = sb.toString().trim();
                 if(game!=null) {
                     if (game.getGenres().equals("")) {
                         game.setGenres(genre);
@@ -72,12 +78,16 @@ public class GameOverviewUtil {
                     }
                 }
             }else if(localName.equals("Publisher") && flag){
-                game.setPublisher(sb.toString());
+                game.setPublisher(sb.toString().trim());
             }else if(localName.equals("baseImgUrl")){
-                game.setBaseImgUrl(sb.toString());
-            } else if(localName.equals("original") && flagImages){
-                game.setImgUrl(sb.toString());
+                game.setBaseImgUrl(sb.toString().trim());
+            }else if(localName.equals("original") && flagImages){
+                game.setImgUrl(sb.toString().trim());
                 flagImages = false;
+            } else if(localName.equals("Youtube")){
+                game.setYouTubeUrl(sb.toString().trim());
+            } else if(localName.equals("SimilarCount")){
+                count = Integer.parseInt(sb.toString().trim());
             }
             sb.setLength(0);
         }

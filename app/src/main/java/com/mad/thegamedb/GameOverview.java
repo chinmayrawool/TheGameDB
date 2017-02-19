@@ -7,8 +7,14 @@ import java.io.Serializable;
  */
 
 public class GameOverview implements Serializable{
-    String title, overview, publisher, genres, baseImgUrl, youTubeUrl, imgUrl;
+    String title, overview, publisher, genres, baseImgUrl, imgUrl,youTubeUrl;
 
+    public GameOverview() {
+        genres = "";
+        baseImgUrl = "";
+        youTubeUrl = "";
+        imgUrl = "";
+    }
 
     public String getTitle() {
         return title;

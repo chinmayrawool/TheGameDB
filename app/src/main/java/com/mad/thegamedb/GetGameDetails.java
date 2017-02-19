@@ -1,9 +1,7 @@
 package com.mad.thegamedb;
 
 import android.os.AsyncTask;
-
 import org.xml.sax.SAXException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
