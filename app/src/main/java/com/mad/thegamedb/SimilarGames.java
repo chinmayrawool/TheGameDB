@@ -24,9 +24,15 @@ public class SimilarGames extends AppCompatActivity implements GetGameDetails.IG
         String gameTitle = getIntent().getExtras().getString(GameDetails.GAME_KEY);
 
         title.setText("Similar games to "+gameTitle);
-        for(int i=0;i<games.size();i++){
-            String url = baseUrl+"GetGame.php?id="+games.get(i);
-            new GetGameDetails(this).execute(url);
+        if(games.size()==0){
+            TextView tv = new TextView(this);
+            tv.setText("No similar games found");
+            layout.addView(tv);
+        }else {
+            for (int i = 0; i < games.size(); i++) {
+                String url = baseUrl + "GetGame.php?id=" + games.get(i);
+                new GetGameDetails(this).execute(url);
+            }
         }
 
         findViewById(R.id.btn_similar_finish).setOnClickListener(new View.OnClickListener() {
