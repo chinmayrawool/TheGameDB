@@ -1,3 +1,12 @@
+/*
+* Homework 05
+* Name: Chinmay Rawool
+*       Neha Dalvi
+* File name: Group03_HW05.zip
+*
+* Note: We have used iFrame to display youtube video in webView. It is working on Nexus 5 mobile device but gives error when run on an emulator.
+* */
+
 package com.mad.thegamedb;
 
 import android.app.ProgressDialog;
@@ -24,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
     EditText et;
     String url="";
     String id;
-    ArrayList<Game> gameList;
+    ArrayList<Game> gameList=null;
     ProgressDialog progressDialog;
     RadioGroup options;
 
@@ -49,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
             public void onClick(View view) {
                 et = (EditText)findViewById(R.id.db_et_search);
                 String text = et.getText().toString();
+                gameList=null;
                 if(!(text.equals(""))){
                     String extraUrl = "GetGamesList.php?name="+text;
                     url = baseUrl + extraUrl;
@@ -60,7 +70,10 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
 
                     new GetDataAsync(MainActivity.this).execute(url);
                     url="";
+                }else{
+                    Toast.makeText(MainActivity.this, "Enter valid text", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 

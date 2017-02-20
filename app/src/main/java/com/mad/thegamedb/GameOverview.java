@@ -1,7 +1,10 @@
 package com.mad.thegamedb;
 
 import java.io.Serializable;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by neha5 on 18-02-2017.
@@ -123,9 +126,9 @@ public class GameOverview implements Serializable{
     }
 
     public String display(){
-         /*Date date = new Date(getReleaseDate());
-         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
-         String str = dateFormat.format(date);*/
-        return getTitle()+". Released in "+getReleaseDate()+". Platform: "+getPlatform();
+         Date date = new Date(getReleaseDate());
+         Format dateFormat = new SimpleDateFormat("yyyy");
+         String str = dateFormat.format(date);
+        return getTitle()+". Released in "+str+". Platform: "+getPlatform();
     }
 }

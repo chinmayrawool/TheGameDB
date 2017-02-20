@@ -24,7 +24,8 @@
         <activity
             android:name=".SimilarGames"
             android:label="Similar Games"></activity>
-        <activity android:name=".WebViewActivity"></activity>
+        <activity android:name=".WebViewActivity"
+            android:hardwareAccelerated="true"></activity>
     </application>
 
 </manifest>

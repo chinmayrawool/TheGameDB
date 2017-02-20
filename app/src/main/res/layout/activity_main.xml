@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/db_btn_search"
-            android:text="Search"
+            android:text="@string/btn_search"
             android:layout_weight="0.77"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="GO"
+        android:text="@string/btn_go"
         android:enabled="false"
         android:id="@+id/db_btn_go" />
 </LinearLayout>

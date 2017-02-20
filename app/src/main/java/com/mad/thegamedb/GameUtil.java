@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameUtil {
 
     public static class GamesSAXParser extends DefaultHandler {
-        ArrayList<Game> gameList;
+        ArrayList<Game> gameList=null;
         Game game;
         StringBuilder sb;
         public static ArrayList<Game> parseGame(InputStream in) throws IOException, SAXException {

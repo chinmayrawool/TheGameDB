@@ -4,4 +4,7 @@
     <string name="btn_play_trailer">Play Trailer</string>
     <string name="btn_similar_game">Similar Games</string>
     <string name="btn_finish">Finish</string>
+    <string name="btn_go">GO</string>
+    <string name="btn_search">Search</string>
+    <string name="youtube">Youtube Video:</string>
 </resources>

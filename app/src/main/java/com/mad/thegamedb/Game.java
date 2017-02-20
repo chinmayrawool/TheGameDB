@@ -1,5 +1,6 @@
 package com.mad.thegamedb;
 
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -52,9 +53,9 @@ public class Game {
                 '}';
     }
      public String display(){
-         /*Date date = new Date(getReleaseDate());
-         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
-         String str = dateFormat.format(date);*/
-         return getGameTitle()+". Released in "+getReleaseDate()+". Platform: "+getPlatform();
+         Date date = new Date(getReleaseDate());
+         Format dateFormat = new SimpleDateFormat("yyyy");
+         String str = dateFormat.format(date);
+         return getGameTitle()+". Released in "+str+". Platform: "+getPlatform();
      }
 }
