@@ -34,7 +34,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:id="@+id/sv_overview"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:layout_weight="0.42">
         <TextView
             android:layout_width="match_parent"
@@ -46,13 +46,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_genre_publisher"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.06"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/btn_play_trailer"
-        android:layout_weight="0.06"
         android:text="@string/btn_play_trailer"
         style="@android:style/Widget.Button"
         android:layout_gravity="center"/>
@@ -63,7 +64,6 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/btn_similar_game"
-        android:layout_weight="0.06"
         style="@android:style/Widget.Button"
         android:layout_gravity="center"/>
 
@@ -72,7 +72,6 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/btn_finish"
-        android:layout_weight="0.06"
         style="@android:style/Widget.Button"
         android:layout_gravity="center"/>
 

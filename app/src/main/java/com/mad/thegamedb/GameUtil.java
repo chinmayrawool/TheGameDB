@@ -1,5 +1,6 @@
 package com.mad.thegamedb;
 
+import android.util.Log;
 import android.util.Xml;
 
 import org.xml.sax.Attributes;
@@ -22,6 +23,7 @@ public class GameUtil {
         StringBuilder sb;
         public static ArrayList<Game> parseGame(InputStream in) throws IOException, SAXException {
             GamesSAXParser parser = new GamesSAXParser();
+            Log.d("demo","In Game Util");
             Xml.parse(in, Xml.Encoding.UTF_8,parser);
             return parser.getGameList();
         }

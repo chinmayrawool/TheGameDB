@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements GetDataAsync.Game
                     progressDialog.show();
 
                     new GetDataAsync(MainActivity.this).execute(url);
+                    url="";
                 }
             }
         });

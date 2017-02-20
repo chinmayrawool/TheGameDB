@@ -10,6 +10,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class GameDetails extends AppCompatActivity implements GetImage.IGetImage
         String imgUrl = game.getImgUrl();
         if(!(baseUrl.equals("")||imgUrl.equals(""))){
             new GetImage(this).execute(game.getBaseImgUrl()+game.getImgUrl());
+        }else{
+            Toast.makeText(this, "No Image to display", Toast.LENGTH_SHORT).show();
         }
 
         title.setText(game.getTitle());
@@ -49,20 +52,18 @@ public class GameDetails extends AppCompatActivity implements GetImage.IGetImage
             }
         });
 
-        /*findViewById(R.id.btn_play_trailer).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_play_trailer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WebView webView = new WebView(GameDetails.this);
-                webView.getSettings().setJavaScriptEnabled(true);
-                webView.setMinimumHeight(200);
-                webView.setMinimumWidth(200);
-                mainLayout.addView(webView);
                 if(!game.getYouTubeUrl().equals("")) {
-                    webView.setWebViewClient(new WebViewClient());
-                    webView.loadUrl(game.getYouTubeUrl());
+                    Intent in = new Intent(GameDetails.this,WebViewActivity.class);
+                    in.putExtra("YoutubeURL",game.getYouTubeUrl());
+                    startActivity(in);
+                }else{
+                    Toast.makeText(GameDetails.this, "No Youtube link", Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
 
         findViewById(R.id.btn_similar_game).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.mad.thegamedb;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.xml.sax.SAXException;
 
@@ -41,7 +42,9 @@ public class GetDataAsync extends AsyncTask<String,Void,ArrayList<Game>> {
             url=new URL(strings[0]);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
+            Log.d("HTTP Connection","before http check");
             if(con.getResponseCode() == HttpURLConnection.HTTP_OK){
+                Log.d("HTTP Connection","API link established");
                 InputStream in = con.getInputStream();
                 return GameUtil.GamesSAXParser.parseGame(in);
             }
@@ -55,7 +58,7 @@ public class GetDataAsync extends AsyncTask<String,Void,ArrayList<Game>> {
         } catch (SAXException e) {
             e.printStackTrace();
         }
-
+        Log.d("array lsits","Null list");
         return null;
     }
 }

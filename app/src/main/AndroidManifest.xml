@@ -21,10 +21,10 @@
         <activity
             android:name=".GameDetails"
             android:label="Game Details" />
-        <activity android:name=".SimilarGames"
-            android:label="Similar Games">
-
-        </activity>
+        <activity
+            android:name=".SimilarGames"
+            android:label="Similar Games"></activity>
+        <activity android:name=".WebViewActivity"></activity>
     </application>
 
 </manifest>
